@@ -1,4 +1,4 @@
-# 🛡️ SOC Sentinel Crew
+# SOC Sentinel Crew
 
 [![CI](https://github.com/PatoEQ/soc-sentinel-crew/actions/workflows/ci.yml/badge.svg)](https://github.com/PatoEQ/soc-sentinel-crew/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%E2%80%93%203.13-blue)
@@ -23,12 +23,12 @@ draft **YARA-L** and **Suricata** detection rules, a **STIX 2.1** IoC bundle and
 <!-- 📸 After your first run, add a screenshot or GIF of the UI here:
      ![SOC Sentinel Crew UI](docs/screenshot.png) -->
 
-> ⚠️ **Decision support, not autopilot.** LLMs make mistakes. A human analyst should
+>  **Decision support, not autopilot.** LLMs make mistakes. A human analyst should
 > review findings and approve every containment action.
 
 ---
 
-## ✨ Why this project is different
+##  Why this project is different
 
 | Problem with typical "AI SOC" demos | What SOC Sentinel Crew does |
 |---|---|
@@ -41,7 +41,7 @@ draft **YARA-L** and **Suricata** detection rules, a **STIX 2.1** IoC bundle and
 
 ---
 
-## 🧠 How it works
+##  How it works
 
 ```mermaid
 flowchart TD
@@ -55,7 +55,7 @@ flowchart TD
     R --> AU{{"5 · Critical Auditor<br/>GATE"}}
     I --> AU
     D --> AU
-    AU -->|"HALT or unparseable"| H(["⛔ Halted — human review"])
+    AU -->|"HALT or unparseable"| H([" Halted — human review"])
     AU -->|"PROCEED / WITH_CORRECTIONS"| W["6 · Report Writer<br/>report · YARA-L · Suricata"]
     W --> O["Rule linting · STIX 2.1 · ATT&CK layer · usage metrics"]
 ```
@@ -75,7 +75,7 @@ next crew starts.
 
 ---
 
-## 🚀 Quickstart
+##  Quickstart
 
 **Requirements:** Python **3.10 – 3.13**, and one LLM: an OpenAI or Anthropic key,
 or a local [Ollama](https://ollama.com) model.
@@ -122,7 +122,7 @@ Results are saved in `output/`:
 
 ---
 
-## 🔐 Safety & privacy features
+##  Safety & privacy features
 
 - **Binding gate:** `gate.py` parses the Auditor's JSON decision. CrewAI
   *guardrails* make the Auditor retry until it states one. Anything unparseable
@@ -145,16 +145,16 @@ See [SECURITY.md](SECURITY.md) for the threat model and how to report issues.
 
 ---
 
-## 🔌 SIEM backends
+##  SIEM backends
 
 Set `SIEM_BACKEND` in `.env`:
 
 | Backend | Status |
 |---|---|
-| `chronicle_mock` | ✅ default, synthetic Google SecOps UDM + Sysmon data |
-| `splunk` | 🧪 beta (REST export API) |
-| `elastic` | 🧪 beta (`_search`) |
-| `sentinel` | 🧪 beta (Log Analytics + Entra ID app) |
+| `chronicle_mock` |  default, synthetic Google SecOps UDM + Sysmon data |
+| `splunk` |  beta (REST export API) |
+| `elastic` |  beta (`_search`) |
+| `sentinel` |  beta (Log Analytics + Entra ID app) |
 
 Beta connectors are unit-tested with mocked HTTP but not yet validated against a
 live instance. Feedback is very welcome. To add your own, see
@@ -162,7 +162,7 @@ live instance. Feedback is very welcome. To add your own, see
 
 ---
 
-## 📊 Evaluation
+##  Evaluation
 
 `evals/` contains labelled alerts:
 
@@ -180,7 +180,7 @@ python evals/run_eval.py --validate-only   # deterministic checks (runs in CI)
 
 Results are saved to `evals/results/` as Markdown and JSON.
 
-<!-- 📈 Publish your scores here, e.g.:
+<!--  Publish your scores here, e.g.:
 | Model | Score | Notes |
 |---|---|---|
 | gpt-4o-mini | x/12 | 3 runs per case |
@@ -188,7 +188,7 @@ Results are saved to `evals/results/` as Markdown and JSON.
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 All settings live in `.env` (see [`.env.example`](.env.example) for the full list):
 
@@ -207,7 +207,7 @@ All settings live in `.env` (see [`.env.example`](.env.example) for the full lis
 
 ---
 
-## 📁 Project structure
+##  Project structure
 
 ```
 ├── app.py              Streamlit UI
@@ -232,7 +232,7 @@ All settings live in `.env` (see [`.env.example`](.env.example) for the full lis
 
 ---
 
-## 🚧 Limitations
+##  Limitations
 
 - The default SIEM data is **simulated**. Real value comes from connecting your
   own SIEM.
@@ -244,12 +244,12 @@ All settings live in `.env` (see [`.env.example`](.env.example) for the full lis
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 PRs are welcome! Start with [CONTRIBUTING.md](CONTRIBUTING.md) and
 [docs/GOOD_FIRST_ISSUES.md](docs/GOOD_FIRST_ISSUES.md).
 Run `ruff check . && pytest` before opening a PR. No API keys are needed.
 
-## 📝 License
+##  License
 
 [MIT](LICENSE) © 2026 PatoEQ
