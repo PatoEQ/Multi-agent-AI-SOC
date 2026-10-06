@@ -1,0 +1,16 @@
+# Runtime dependencies. Python 3.10 – 3.13 (CrewAI does not support 3.14 yet).
+
+# ---- Core multi-agent framework --------------------------------------------
+crewai>=1.0.0,<2.0.0
+
+# ---- HTTP + config ----------------------------------------------------------
+requests>=2.32.0
+python-dotenv>=1.0.1
+pydantic>=2.8.0
+
+# ---- Threat / CVE search backend -------------------------------------------
+# NOTE: the old "duckduckgo-search" package was renamed to "ddgs" in 2025.
+ddgs>=9.0.0
+
+# ---- Web UI -----------------------------------------------------------------
+streamlit>=1.40.0

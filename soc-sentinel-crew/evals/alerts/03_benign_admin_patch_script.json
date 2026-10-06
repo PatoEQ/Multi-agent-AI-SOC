@@ -1,0 +1,28 @@
+{
+  "alert_id": "GCTI-2026-10-06-00503",
+  "source": "Google SecOps (Chronicle) — Rule: powershell_execution_policy_bypass",
+  "severity": "LOW",
+  "created_time": "2026-10-06T16:20:05Z",
+  "rule_name": "T1059.001 PowerShell with -ExecutionPolicy Bypass",
+  "principal": {
+    "hostname": "IT-ADM-0007",
+    "ip": "10.30.2.17",
+    "user": "CORP\\adm.mrios",
+    "asset_role": "IT administration jump host"
+  },
+  "observables": {
+    "process_name": "powershell.exe",
+    "command_line": "powershell.exe -ExecutionPolicy Bypass -File \\\\fileserver01\\it-scripts$\\Install-MonthlyPatches.ps1",
+    "parent_process": "sccm\\ccmexec.exe",
+    "network": "SMB to internal file server 10.30.0.5 only; no external connections"
+  },
+  "security_result": {
+    "action": "ALLOW",
+    "category": "SOFTWARE_DEPLOYMENT",
+    "summary": "Signed internal patch script launched by the SCCM client during the maintenance window."
+  },
+  "context": {
+    "maintenance_window": "2026-10-06 16:00-18:00",
+    "script_signer": "CORP Internal Code Signing CA"
+  }
+}

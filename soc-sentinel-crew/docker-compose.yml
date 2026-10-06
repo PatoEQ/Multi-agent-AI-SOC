@@ -1,0 +1,13 @@
+services:
+  soc-sentinel:
+    build: .
+    image: soc-sentinel-crew:latest
+    # Keys are read at runtime from your local .env (never baked into the image).
+    env_file:
+      - .env
+    ports:
+      # Bound to localhost only: the UI has no login, so do not expose it publicly.
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - ./output:/app/output
+    restart: unless-stopped

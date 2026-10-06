@@ -1,0 +1,9 @@
+# Secret-scanning configuration (used by the gitleaks step in CI).
+# Extends the default ruleset and only allow-lists obvious, documented placeholders.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Documented placeholders and test dummies — never real credentials"
+paths = ['''\.env\.example$''']
+regexes = ['''test-dummy-key''', '''your-[a-z0-9-]+-here''']
