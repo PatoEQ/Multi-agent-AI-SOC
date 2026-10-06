@@ -81,7 +81,7 @@ next crew starts.
 or a local [Ollama](https://ollama.com) model.
 
 ```bash
-git clone https://github.com/PatoEQ/soc-sentinel-crew.git
+git clone https://github.com/PatoEQ/Multi-agent-AI-SOC.git
 cd soc-sentinel-crew
 
 python -m venv .venv
