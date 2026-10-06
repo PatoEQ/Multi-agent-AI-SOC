@@ -1,6 +1,6 @@
 # SOC Sentinel Crew
 
-[![CI](https://github.com/PatoEQ/soc-sentinel-crew/actions/workflows/ci.yml/badge.svg)](https://github.com/PatoEQ/soc-sentinel-crew/actions/workflows/ci.yml)
+[![CI](https://github.com/PatoEQ/Multi-agent-AI-SOC/actions/workflows/ci.yml/badge.svg)](https://github.com/PatoEQ/Multi-agent-AI-SOC/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%E2%80%93%203.13-blue)
 ![CrewAI](https://img.shields.io/badge/CrewAI-1.x-orange)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
