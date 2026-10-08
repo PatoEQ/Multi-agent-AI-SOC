@@ -1,5 +1,5 @@
 {
-  "description": "Labelled evaluation cases for the SOC Sentinel Crew. Run with: python evals/run_eval.py",
+  "description": "Labelled evaluation cases for the Multi-agent AI SOC. Run with: python evals/run_eval.py",
   "cases": [
     {
       "id": "tp-office-powershell-c2",

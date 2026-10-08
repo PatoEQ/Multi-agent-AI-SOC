@@ -121,12 +121,12 @@ def extract_techniques(*texts: str) -> list[dict]:
 # Builders
 # --------------------------------------------------------------------------- #
 def build_stix_bundle(indicators: list[dict], techniques: list[dict],
-                      title: str = "SOC Sentinel Crew investigation") -> dict[str, Any]:
+                      title: str = "Multi-agent AI SOC investigation") -> dict[str, Any]:
     now = _now()
-    identity_id = _stix_id("identity", "soc-sentinel-crew")
+    identity_id = _stix_id("identity", "multi-agent-ai-soc")
     objects: list[dict[str, Any]] = [{
         "type": "identity", "spec_version": "2.1", "id": identity_id,
-        "created": now, "modified": now, "name": "SOC Sentinel Crew",
+        "created": now, "modified": now, "name": "Multi-agent AI SOC",
         "identity_class": "system",
     }]
     refs: list[str] = []
@@ -173,12 +173,12 @@ def build_stix_bundle(indicators: list[dict], techniques: list[dict],
 
 
 def build_navigator_layer(techniques: list[dict],
-                          name: str = "SOC Sentinel Crew — observed techniques") -> dict:
+                          name: str = "Multi-agent AI SOC — observed techniques") -> dict:
     return {
         "name": name,
         "versions": {"layer": "4.5", "navigator": "5.1.0"},
         "domain": "enterprise-attack",
-        "description": "Techniques observed and validated by the SOC Sentinel Crew.",
+        "description": "Techniques observed and validated by the Multi-agent AI SOC.",
         "techniques": [{
             "techniqueID": t["id"], "score": 1, "color": "#e4572e",
             "comment": t.get("evidence", ""), "enabled": True,

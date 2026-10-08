@@ -1,7 +1,7 @@
 """
 config.py
 =========
-Centralised configuration for the **SOC Sentinel Crew**.
+Centralised configuration for the **Multi-agent AI SOC**.
 
 Everything environment-specific (API keys, model selection, SIEM backend,
 mock toggles, rate limits, privacy options) is resolved here, so the rest of

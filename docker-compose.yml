@@ -1,7 +1,7 @@
 services:
-  soc-sentinel:
+  multi-agent-ai-soc:
     build: .
-    image: soc-sentinel-crew:latest
+    image: multi-agent-ai-soc:latest
     # Keys are read at runtime from your local .env (never baked into the image).
     env_file:
       - .env

@@ -1,5 +1,5 @@
 """
-app.py — Streamlit front-end for the SOC Sentinel Crew.
+app.py — Streamlit front-end for the Multi-agent AI SOC.
 
 Paste a SIEM/UDM alert, run the crew, and watch six agents triage, enrich,
 investigate, plan, audit each other and report — with live reasoning, the
@@ -19,7 +19,7 @@ import streamlit as st
 
 import config
 
-st.set_page_config(page_title="SOC Sentinel Crew", page_icon="🛡️", layout="wide")
+st.set_page_config(page_title="Multi-agent AI SOC", layout="wide")
 
 SAMPLE_DIR = "sample_alerts"
 EVAL_DIR = os.path.join("evals", "alerts")
@@ -67,7 +67,7 @@ def _apply_overrides(model: str, process: str, force_mock: bool, redact: bool,
 # --------------------------------------------------------------------------- #
 # Sidebar
 # --------------------------------------------------------------------------- #
-st.sidebar.title("⚙️ Configuration")
+st.sidebar.title("Configuration")
 current = config.get_settings()
 
 model_options = ["gpt-4o-mini", "gpt-4o", "anthropic/claude-sonnet-4-5", "ollama/llama3.1"]
@@ -84,7 +84,7 @@ redact = st.sidebar.toggle("Redact PII before sending to the LLM", value=current
 early_exit = st.sidebar.toggle("Stop early on clear false positives",
                                value=current.triage_early_exit)
 
-with st.sidebar.expander("🔑 API keys (this session only)"):
+with st.sidebar.expander("API keys (this session only)"):
     st.caption("Leave blank to use your local .env. Typed keys stay in memory and are "
                "never written to disk.")
     keys = {name: st.text_input(name, type="password") for name in
@@ -97,7 +97,7 @@ _apply_overrides(model, process, force_mock, redact, early_exit, keys)
 # --------------------------------------------------------------------------- #
 # Main panel
 # --------------------------------------------------------------------------- #
-st.title("🛡️ SOC Sentinel Crew")
+st.title("Multi-agent AI SOC")
 st.markdown(
     "Six AI specialists triage an alert, enrich IoCs, reconstruct the attack, plan the "
     "response and **audit each other for hallucinations**. The Auditor's decision is "
@@ -118,11 +118,11 @@ alert_text = st.text_area("Paste a SIEM / UDM alert", value=st.session_state.get
 
 warnings = config.preflight()
 if warnings:
-    with st.expander(f"⚠️ Configuration notes ({len(warnings)})"):
+    with st.expander(f"Configuration notes ({len(warnings)})"):
         for w in warnings:
             st.write(f"- {w}")
 
-run = st.button("▶️  Run investigation", type="primary")
+run = st.button("Run investigation", type="primary")
 
 # --------------------------------------------------------------------------- #
 # Run
@@ -169,7 +169,7 @@ if run:
         if kind == "step":
             lines.append(f"• {payload}")
         else:
-            lines += ["", f"✅ **{payload} finished** — handing off.", ""]
+            lines += ["", f"**{payload} finished** — handing off.", ""]
         feed.markdown("\n\n".join(lines[-40:]))
     thread.join(timeout=2)
 
@@ -186,13 +186,13 @@ if run:
         (st.success if decision == "PROCEED" else st.warning)(
             f"Report approved by the Auditor — gate decision **{decision}**.")
     elif result.status == STATUS_HALTED:
-        st.error("⛔ The Auditor HALTED the pipeline. No report or rules were produced; "
+        st.error("The Auditor HALTED the pipeline. No report or rules were produced; "
                  "review the audit before acting.")
     elif result.status == STATUS_FALSE_POSITIVE:
         st.info("Closed at triage as a FALSE POSITIVE (early exit).")
 
     for f in result.injection_findings:
-        st.warning(f"🚩 Prompt-injection marker: **{f.label}** — “{f.excerpt}”")
+        st.warning(f"Prompt-injection marker: **{f.label}** — “{f.excerpt}”")
 
     m1, m2, m3, m4 = st.columns(4)
     m1.metric("Triage verdict", result.triage_verdict)
@@ -200,11 +200,11 @@ if run:
     m3.metric("LLM requests", result.usage.get("successful_requests", 0))
     m4.metric("Duration", f"{result.duration_seconds:.0f}s")
     if result.redacted_identities:
-        st.caption(f"🔒 {result.redacted_identities} identities were pseudonymised before "
+        st.caption(f"{result.redacted_identities} identities were pseudonymised before "
                    "leaving this machine.")
 
     tab_report, tab_debate, tab_rules, tab_exports = st.tabs(
-        ["📑 Report", "🧠 Agent debate", "🧪 Rule validation", "📦 Exports"])
+        ["Report", "Agent debate", "Rule validation", "Exports"])
 
     with tab_report:
         st.markdown(result.report_markdown)
@@ -220,7 +220,7 @@ if run:
         if not result.rule_checks:
             st.write("No rules to validate for this outcome.")
         for i, check in enumerate(result.rule_checks, 1):
-            label = "✅ passes static checks" if check.ok else "❌ needs fixes"
+            label = "passes static checks" if check.ok else "needs fixes"
             st.markdown(f"**Rule {i} ({check.language}) — {label}**"
                         + (" · loaded by Suricata -T" if check.engine_checked else ""))
             st.code(check.rule, language="text")
@@ -230,14 +230,14 @@ if run:
                 st.warning(w)
 
     with tab_exports:
-        st.download_button("⬇️ Report (Markdown)", result.report_markdown,
+        st.download_button("Report (Markdown)", result.report_markdown,
                            file_name="incident_report.md", mime="text/markdown")
         if result.stix_bundle:
-            st.download_button("⬇️ IoCs (STIX 2.1 bundle)",
+            st.download_button("IoCs (STIX 2.1 bundle)",
                                json.dumps(result.stix_bundle, indent=2),
                                file_name="iocs.stix.json", mime="application/json")
         if result.navigator_layer:
-            st.download_button("⬇️ MITRE ATT&CK Navigator layer",
+            st.download_button("MITRE ATT&CK Navigator layer",
                                json.dumps(result.navigator_layer, indent=2),
                                file_name="attack_navigator_layer.json", mime="application/json")
             st.caption("Open https://mitre-attack.github.io/attack-navigator/ → "

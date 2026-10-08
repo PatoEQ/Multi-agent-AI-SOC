@@ -1,6 +1,6 @@
-# SOC Sentinel Crew — container image for the Streamlit UI (and CLI).
+# Multi-agent AI SOC — container image for the Streamlit UI (and CLI).
 #   docker compose up            -> http://localhost:8501
-#   docker compose run --rm soc-sentinel python main.py --sample
+#   docker compose run --rm multi-agent-ai-soc python main.py --sample
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \

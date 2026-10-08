@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-main.py — command-line entry point for the SOC Sentinel Crew.
+main.py — command-line entry point for the Multi-agent AI SOC.
 
 Examples
 --------
@@ -80,7 +80,7 @@ def main() -> int:
               file=sys.stderr)
         return 2
 
-    print("\n=== SOC Sentinel Crew: investigation starting ===\n")
+    print("\n=== Multi-agent AI SOC: investigation starting ===\n")
     result = run_pipeline(
         alert,
         step_callback=None if args.quiet else _step_logger,

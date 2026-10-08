@@ -77,7 +77,7 @@ GOOD_SURICATA = ('alert tls $HOME_NET any -> 185.220.101.47 443 (msg:"C2 beacon;
                  'flow:established,to_server; sid:1000001; rev:1;)')
 GOOD_YARAL = """rule powershell_from_office {
   meta:
-    author = "SOC Sentinel Crew"
+    author = "Multi-agent AI SOC"
   events:
     $e.metadata.event_type = "PROCESS_LAUNCH"
     $e.principal.process.parent_process.file.full_path = /winword\\.exe$/ nocase

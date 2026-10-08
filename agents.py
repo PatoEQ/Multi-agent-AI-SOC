@@ -1,7 +1,7 @@
 """
 agents.py
 =========
-The six specialised agents of the SOC Sentinel Crew.
+The six specialised agents of the Multi-agent AI SOC.
 
 Each agent is a narrow expert with the minimum set of tools it needs
 (least privilege). Every backstory ends with the same untrusted-data rule

@@ -7,7 +7,7 @@ connectors, eval cases, better prompts, docs and bug fixes.
 
 ```bash
 git clone https://github.com/PatoEQ/Multi-agent-AI-SOC.git
-cd soc-sentinel-crew
+cd Multi-agent-AI-SOC
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements-dev.txt
 cp .env.example .env

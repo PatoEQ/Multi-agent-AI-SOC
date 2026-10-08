@@ -1,7 +1,7 @@
 """
 tools.py
 ========
-Custom CrewAI tools for the SOC Sentinel Crew, written from scratch on top of
+Custom CrewAI tools for the Multi-agent AI SOC, written from scratch on top of
 ``crewai.tools.BaseTool``.
 
 1. ``SIEMLogSearchTool``   — read-only log search through the configured SIEM
