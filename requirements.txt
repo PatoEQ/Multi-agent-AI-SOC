@@ -10,7 +10,7 @@ pydantic>=2.8.0
 
 # ---- Threat / CVE search backend -------------------------------------------
 # NOTE: the old "duckduckgo-search" package was renamed to "ddgs" in 2025.
-ddgs>=9.0.0
+ddgs>=9.16.0
 
 # ---- Web UI -----------------------------------------------------------------
 streamlit>=1.40.0
