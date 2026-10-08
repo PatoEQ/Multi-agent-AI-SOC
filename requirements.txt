@@ -6,7 +6,7 @@ crewai>=1.0.0,<2.0.0
 # ---- HTTP + config ----------------------------------------------------------
 requests>=2.32.0
 python-dotenv>=1.0.1
-pydantic>=2.8.0
+pydantic>=2.13.5
 
 # ---- Threat / CVE search backend -------------------------------------------
 # NOTE: the old "duckduckgo-search" package was renamed to "ddgs" in 2025.
