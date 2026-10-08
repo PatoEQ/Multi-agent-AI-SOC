@@ -6,7 +6,7 @@ Please **do not open a public issue** for security problems.
 
 Report privately through GitHub:
 **Security tab → Report a vulnerability**
-(<https://github.com/PatoEQ/soc-sentinel-crew/security/advisories/new>).
+(<https://github.com/PatoEQ/Multi-agent-AI-SOC/advisories/new>).
 
 Include what you found, how to reproduce it, and the impact you expect. You can
 expect an acknowledgement within 7 days. Please allow a reasonable time for a
