@@ -1,7 +1,7 @@
 # Runtime dependencies. Python 3.10 – 3.13 (CrewAI does not support 3.14 yet).
 
 # ---- Core multi-agent framework --------------------------------------------
-crewai>=1.0.0,<2.0.0
+crewai>=1.15.23,<2.0.0
 
 # ---- HTTP + config ----------------------------------------------------------
 requests>=2.34.2
